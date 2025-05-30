@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
 
 export default {
 	darkMode: ["class"],
@@ -54,20 +55,23 @@ export default {
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
+					foreground: 'hsl(var(--sidebar-foreground))'
+				},
+        // PRD specific color names for direct utility class usage
+        primaryText: 'hsl(var(--primary-text-color))', // For text-primaryText if needed directly
+        secondaryText: 'hsl(var(--secondary-text-color))', // For text-secondaryText as in PRD subheading
+        surface: 'hsl(var(--surface-color))', // For bg-surface if needed directly
+        accentBlue: 'hsl(var(--primary))', // Alias for primary, as --primary is accentBlue
+        accentGray: 'hsl(var(--secondary))' // Alias for secondary, as --secondary is accentGray
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				lg: 'var(--radius)', // 0.375rem, maps to PRD default "rounded-md"
+				md: 'calc(var(--radius) - 2px)', // 0.25rem, "rounded"
+				sm: 'calc(var(--radius) - 4px)' // 0.125rem, maps to PRD buttons "rounded-sm"
 			},
+			fontFamily: {
+        sans: ['var(--font-sans)', ...fontFamily.sans],
+      },
 			keyframes: {
 				'accordion-down': {
 					from: {
